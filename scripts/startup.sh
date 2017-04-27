@@ -221,6 +221,9 @@ chown -R www-data:www-data "/var/cache/zoneminder/images"
 	fi
 
 #Get docker env timezone and set system timezone
+echo "Deleteing default apache webpage"
+echo " " > /var/www/html/index.html
+echo "date.timezone = $PHP_TIMEZONE" >> /etc/php/7.0/apache2/php.ini
 echo "setting the correct local time"
 echo $PHP_TIMEZONE > /etc/timezone
 export DEBCONF_NONINTERACTIVE_SEEN=true DEBIAN_FRONTEND=noninteractive
@@ -232,9 +235,6 @@ chmod +x ./config/auxscript.sh
 ./config/auxscript.sh
 fi
 
-echo "Deleteing default apache webpage"
-echo " " > /var/www/html/index.html
-echo "date.timezone = $PHP_TIMEZONE" >> /etc/php/7.0/apache2/php.ini
 echo "starting other services"
 service apache2 start
 service zoneminder start
