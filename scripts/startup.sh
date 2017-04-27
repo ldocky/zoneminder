@@ -222,7 +222,7 @@ chown -R www-data:www-data "/var/cache/zoneminder/images"
 
 #Get docker env timezone and set system timezone
 echo "setting the correct local time"
-echo $TZ > /etc/timezone
+echo $PHP_TIMEZONE > /etc/timezone
 export DEBCONF_NONINTERACTIVE_SEEN=true DEBIAN_FRONTEND=noninteractive
 dpkg-reconfigure tzdata
 
