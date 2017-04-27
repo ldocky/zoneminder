@@ -225,15 +225,17 @@ echo "setting the correct local time"
 echo $TZ > /etc/timezone
 export DEBCONF_NONINTERACTIVE_SEEN=true DEBIAN_FRONTEND=noninteractive
 dpkg-reconfigure tzdata
+
 #Makes aux script is set to executable if present (the script is user configurable
 if [ "$(ls -Ad /config/auxscript.sh)" ]; then
 chmod +x ./config/auxscript.sh
 ./config/auxscript.sh
 fi
+
 echo "Deleteing default apache webpage"
- echo " " > /var/www/html/index.html
+echo " " > /var/www/html/index.html
 echo "date.timezone = $PHP_TIMEZONE" >> /etc/php/7.0/apache2/php.ini
-echo "starting other services"l
+echo "starting other services"
 service apache2 start
 service zoneminder start
 tail -F n0 /dev/null
