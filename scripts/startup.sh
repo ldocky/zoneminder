@@ -236,5 +236,5 @@ service zoneminder start
 if [ "$(ls -Ad /config/auxscript.sh)" ]; then
 chmod +x ./config/auxscript.sh
 ./config/auxscript.sh
-else tail -F n0 /dev/null
 fi
+tail -F n0 /dev/null
