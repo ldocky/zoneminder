@@ -7,15 +7,16 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN 	apt-get update
 RUN	apt-get install -y software-properties-common 
+RUN	add-apt-repository -y ppa:iconnor/zoneminder
 RUN	add-apt-repository -y ppa:iconnor/zoneminder-1.32
 RUN	apt-get update
 RUN 	apt-get install -y mysql-server \
     	apache2 \
-    	php \
+    	php7.2 \
     	libapache2-mod-php \
     	php-mysql \
-	apcu \
-	apcu_bc \
+	php-apcu \
+	php-apcu-bc \
 	nano \
     	curl \
     	zoneminder
