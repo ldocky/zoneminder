@@ -14,6 +14,8 @@ RUN 	apt-get install -y mysql-server \
     	php \
     	libapache2-mod-php \
     	php-mysql \
+	apcu \
+	apcu_bc \
 	nano \
     	curl \
     	zoneminder
