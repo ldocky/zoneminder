@@ -22,6 +22,7 @@ TMPDIR="/tmp/zm"
 command="$ZM_PATH_BIN/zmpkg.pl"
 
 start() {
+	sleep 15
 	echo -n "Starting $prog: "
 	mkdir -p "$RUNDIR" && chown www-data:www-data "$RUNDIR"
 	mkdir -p "$TMPDIR" && chown www-data:www-data "$TMPDIR"
