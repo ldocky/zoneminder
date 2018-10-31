@@ -40,5 +40,10 @@ RUN 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY 	scripts/startup.sh /startup.sh
+COPY 	scripts/zoneminder /etc/init.d/
+RUN 	chmod 755 /etc/init.d/zoneminder && \
+	update-rc.d zoneminder defaults && \
+	update-rc.d zoneminder enable
+
 RUN 	chmod 777 /startup.sh
 ENTRYPOINT ["/startup.sh"]
