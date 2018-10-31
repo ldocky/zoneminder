@@ -28,7 +28,10 @@ RUN 	chown -R www-data:www-data /usr/share/zoneminder
 RUN 	a2enconf zoneminder  && \
     	a2enmod cgi && \
     	a2enmod rewrite && \
-    	a2enmod ssl
+    	a2enmod ssl && \
+	a2enmod expires && \
+	a2enmod headers
+	
 RUN 	echo sql_mode = NO_ENGINE_SUBSTITUTION >> /etc/mysql/mysql.conf.d/mysqld.cnf
 RUN 	echo date.timezone = Europe/London >> /etc/php/7.0/apache2/php.ini
 
