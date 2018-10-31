@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN 	apt-get update
 RUN	apt-get install -y software-properties-common 
 RUN	add-apt-repository -y ppa:iconnor/zoneminder
-# RUN	add-apt-repository -y ppa:iconnor/zoneminder-1.32
+RUN	add-apt-repository -y ppa:iconnor/zoneminder-1.32
 RUN	apt-get update
 RUN 	apt-get install -y mysql-server \
     	apache2 \
@@ -33,7 +33,6 @@ RUN 	a2enconf zoneminder  && \
 	a2enmod headers
 	
 RUN 	echo sql_mode = NO_ENGINE_SUBSTITUTION >> /etc/mysql/mysql.conf.d/mysqld.cnf
-RUN 	echo date.timezone = Europe/London >> /etc/php/7.0/apache2/php.ini
 
 EXPOSE 80 443
 
