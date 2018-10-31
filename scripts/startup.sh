@@ -42,7 +42,6 @@ if [ "$(ls -Ad /config/mysql)" ]; then
 			echo "...starting mysqlFailed to start MySQL"
 		fi
 	echo -n "...setting permissions on mysql database ..."
-#	mysql -u root -e "grant select,insert,update,delete,create,alter,index,lock tables on zm.* to 'zmuser'@localhost identified by 'zmpass';"
 	mysql -u root -e "grant lock tables,alter,drop,select,insert,update,delete,create,index,alter routine,create routine, trigger,execute on zm.* to 'zmuser'@localhost identified by 'zmpass';"
 		if [ "$?" = "0" ]; then
 			echo "OK"
@@ -102,7 +101,7 @@ else
 			exit 46
 		fi
 	echo -n "...setting permissions ... "
-	mysql -u root -e "grant select,insert,update,delete,create,alter,index,lock tables on zm.* to 'zmuser'@localhost identified by 'zmpass';"
+	mysql -u root -e "grant lock tables,alter,drop,select,insert,update,delete,create,index,alter routine,create routine, trigger,execute on zm.* to 'zmuser'@localhost identified by 'zmpass';"
 		if [ "$?" = "0" ]; then
 			echo "OK"
 		else
