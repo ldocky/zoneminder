@@ -232,7 +232,9 @@ dpkg-reconfigure tzdata
 
 echo "starting other services"
 service apache2 start
-service zoneminder start
+service zoneminder start 
+#/usr/bin/zmpkg.pl start
+
 #Makes aux script is set to executable if present (the script is user configurable)
 if [ "$(ls -Ad /config/auxscript.sh)" ]; then
 chmod +x ./config/auxscript.sh
