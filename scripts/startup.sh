@@ -230,8 +230,17 @@ export DEBCONF_NONINTERACTIVE_SEEN=true DEBIAN_FRONTEND=noninteractive
 dpkg-reconfigure tzdata
 
 echo "starting other services"
+
+service mysql stop
+service apache2 stop
+service zoneminder stop
+sleep 5
+service mysql start
+sleep 5
 service apache2 start
-service zoneminder start 
+sleep 5
+service zoneminder start
+
 #/usr/bin/zmpkg.pl start
 
 #Makes aux script is set to executable if present (the script is user configurable)
