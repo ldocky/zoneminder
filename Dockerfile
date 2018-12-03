@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM ubuntu:bionic
 MAINTAINER ldocky 
 
 VOLUME ["/config", "/var/cache/zoneminder"]
