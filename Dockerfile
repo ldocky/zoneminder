@@ -7,7 +7,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN 	apt-get update
 RUN	apt-get install -y software-properties-common 
-RUN	add-apt-repository -y ppa:iconnor/zoneminder-1.32
 RUN	add-apt-repository -y ppa:iconnor/zoneminder
 RUN	apt-get update
 RUN 	apt-get install -y mysql-server \
@@ -18,8 +17,12 @@ RUN 	apt-get install -y mysql-server \
 	php-apcu \
 	php-apcu-bc \
 	nano \
-    	curl \
-    	zoneminder
+    	curl 
+RUN	add-apt-repository -y --remove ppa:iconnor/zoneminder	
+RUN 	apt-get clean	
+RUN	add-apt-repository -y ppa:iconnor/zoneminder-1.32
+RUN	apt-get update
+RUN    	apt-get install -y zoneminder
 
 RUN 	adduser www-data video
 RUN 	chmod 775 /etc/zm/zm.conf
