@@ -29,8 +29,6 @@ if [ "$(ls -Ad /config/mysql)" ]; then
 		
 	echo -n "...setting owner ... "
 	chown --recursive --silent mysql:mysql /var/lib/mysql
-	chown --recursive --silent mysql:mysql /config/mysql/
-
 		if [ "$?" = "0" ]; then
 			echo "OK"
 		else
@@ -79,8 +77,7 @@ else
 			exit 43
 		fi
 	echo -n "...changing owner /var/lib/mysql ... "
-	chown -R mysql:mysql /var/lib/mysql
-	chown --recursive --silent /config/mysql/
+	chown -R mysql:mysql /var/lib/mysql	
 		if [ "$?" = "0" ]; then
 			echo "OK"
 		else
@@ -226,7 +223,7 @@ chown -R www-data:www-data "/var/cache/zoneminder/images"
 #Get docker env timezone and set system timezone
 echo "Deleteing default apache webpage"
 echo " " > /var/www/html/index.html
-echo "date.timezone = $TMZ" >> /etc/php/7.2/apache2/php.ini
+echo "date.timezone = $TMZ" >> /etc/php/7.0/apache2/php.ini
 echo "setting the correct local time"
 echo $TMZ > /etc/timezone
 export DEBCONF_NONINTERACTIVE_SEEN=true DEBIAN_FRONTEND=noninteractive
