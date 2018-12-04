@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:xenial
 MAINTAINER ldocky 
 
 VOLUME ["/config", "/var/cache/zoneminder"]
@@ -7,16 +7,19 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN 	apt-get update
 RUN	apt-get install -y software-properties-common 
+RUN	add-apt-repository -y ppa:iconnor/zoneminder
 RUN	add-apt-repository -y ppa:iconnor/zoneminder-1.32
 RUN	apt-get update
-RUN 	apt-get install -y mariadb-server \
+RUN 	apt-get install -y mysql-server \
     	apache2 \
-    	php \
+    	php7.0 \
     	libapache2-mod-php \
-    	php-mysql \
+    	php7.0-mysql \
+	php-apcu \
+	php-apcu-bc \
 	nano \
-    	curl \ 
-        zoneminder
+    	curl \
+    	zoneminder
 
 RUN 	adduser www-data video
 RUN 	chmod 775 /etc/zm/zm.conf
@@ -29,7 +32,7 @@ RUN 	a2enconf zoneminder  && \
 	a2enmod expires && \
 	a2enmod headers
 	
-
+RUN 	echo sql_mode = NO_ENGINE_SUBSTITUTION >> /etc/mysql/mysql.conf.d/mysqld.cnf
 
 EXPOSE 80 443
 
