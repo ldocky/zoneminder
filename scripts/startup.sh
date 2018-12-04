@@ -29,6 +29,8 @@ if [ "$(ls -Ad /config/mysql)" ]; then
 		
 	echo -n "...setting owner ... "
 	chown --recursive --silent mysql:mysql /var/lib/mysql
+	chown --recursive --silent mysql:mysql /config/mysql/
+
 		if [ "$?" = "0" ]; then
 			echo "OK"
 		else
@@ -77,7 +79,8 @@ else
 			exit 43
 		fi
 	echo -n "...changing owner /var/lib/mysql ... "
-	chown -R mysql:mysql /var/lib/mysql	
+	chown -R mysql:mysql /var/lib/mysql
+	chown --recursive --silent /config/mysql/
 		if [ "$?" = "0" ]; then
 			echo "OK"
 		else
