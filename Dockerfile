@@ -29,7 +29,7 @@ RUN 	a2enconf zoneminder  && \
 	a2enmod expires && \
 	a2enmod headers
 	
-RUN 	echo sql_mode = NO_ENGINE_SUBSTITUTION >> /etc/mysql/mysql.conf.d/mysqld.cnf
+
 
 EXPOSE 80 443
 
